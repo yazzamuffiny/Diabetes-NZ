@@ -4,6 +4,10 @@ import toast, { Toaster } from 'react-hot-toast'
 
 const Subscribe = () => {
 
+  const serviceID = import.meta.env.VITE_FORM_SERVICE_ID;
+  const templateID = import.meta.env.VITE_FORM_TEMPLATE_ID;
+  const formAPIKey = import.meta.env.VITE_FORM_API_KEY;
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -19,10 +23,10 @@ const Subscribe = () => {
 
         emailjs
             .send(
-                'service_go3dryt', //service ID (can hide in env file)
-                'template_wdhkfje', //template ID (can hide in env file)
+                serviceID,
+                templateID,
                 formData,
-                'V4ht9FX_1ca_ajZC9' // public api key (can hide in env file)
+                formAPIKey
             )
             .then(
                 (response) => {
